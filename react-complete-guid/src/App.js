@@ -12,11 +12,11 @@ const app = props => {
   });
 
   const [otherState, setOtherState] = useState({ otherState: 'some other value' });
-  console.log(personsState);
-  console.log(otherState);
+  //console.log(personsState);
+  //console.log(otherState);
 
   const switchNameHandler = () => {
-    //console.log('Was clicked.');
+    console.log('Was clicked.');
     // DON'T DO THIS:  personsState.persons[0].name = 'Maximilian';
 
     setPersonsState({
@@ -24,9 +24,10 @@ const app = props => {
         { name: 'Maximilian', age: 28 },
         { name: 'Manu', age: 29 },
         { name: 'Stehapnie', age: 27 }
-      ],
-      otherState: personsState.otherState
+      ]
     })
+
+    setOtherState(otherState: 'some other value');
   }
 
   return (
@@ -34,9 +35,16 @@ const app = props => {
       <h1>Hi, I'm a React App</h1>
       <p>This is really working!</p>
       <button onClick={switchNameHandler}>Switch Name</button>
-      <Person name={personsState.persons[0].name} age={personsState.persons[0].age} />
-      <Person name={personsState.persons[1].name} age={personsState.persons[1].age}>My Hobbies: Racing</Person>
-      <Person name={personsState.persons[2].name} age={personsState.persons[2].age} />
+      <Person
+        name={personsState.persons[0].name}
+        age={personsState.persons[0].age} />
+      <Person
+        name={personsState.persons[1].name}
+        age={personsState.persons[1].age}
+        click={switchNameHandler} >My Hobbies: Racing</Person>
+      <Person
+        name={personsState.persons[2].name}
+        age={personsState.persons[2].age} />
     </div>
   );
   //return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Does this work now?'));
