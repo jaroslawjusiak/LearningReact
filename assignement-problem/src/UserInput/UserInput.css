@@ -1,0 +1,10 @@
+.UserInput input[type=text] {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 2em;
+    font-family: monospace;
+    border-radius: 15%;
+    border-color: turquoise;
+  } 
