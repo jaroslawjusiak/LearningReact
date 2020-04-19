@@ -24,7 +24,12 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // slice method without arguments copies the whole array
+    //const persons = this.state.persons.slice();
+    
+    // ES6 alternative approach - using spread operator (...) which creates lists of elements of original array.
+    // Having such list we can use it to create new array, by passing into list of elements
+    const person = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   }
