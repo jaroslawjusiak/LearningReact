@@ -3,11 +3,12 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+
   state = {
     persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Manu', age: 29 },
-      { name: 'Stephanie', age: 26 }
+      { id: 'gbsdf', name: 'Max', age: 28 },
+      { id: 'SGvbr', name: 'Manu', age: 29 },
+      { id: 'gsdfggr3', name: 'Stephanie', age: 26 }
     ],
     otherState: 'some other value',
     showPersons: false
@@ -29,7 +30,7 @@ class App extends Component {
     
     // ES6 alternative approach - using spread operator (...) which creates lists of elements of original array.
     // Having such list we can use it to create new array, by passing into list of elements
-    const person = [...this.state.persons];
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   }
@@ -59,7 +60,8 @@ class App extends Component {
               return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
-              age={person.age} />
+              age={person.age} 
+              key={person.id}/>
             })
           }
         </div> 
