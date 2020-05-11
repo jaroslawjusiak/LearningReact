@@ -6,9 +6,19 @@ const cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     setTimeout(()=>{
-      alert('Saved data to cloud!');
+      console.log('Saved data to cloud!');
     },1000);
-  }, [])
+    return () => {
+      console.log('[Cockpit.js] cleanup work in useEffect');
+    };
+  }, []);
+
+  useEffect(() =>{
+    console.log('[Cockpit.js] 2nd useEffect');
+    return () => {
+      console.log('[Cockpit.js] 2nd cleanup work in useEffect');
+    };
+  });
 
   //[props.persons] -> gdy zmieni sie zawartosc persons, to metoda ta odpali sie
   //[] -> dla puste tablicy uruchomi sie tylko 1 raz, gdy jest inicjowany komponent
