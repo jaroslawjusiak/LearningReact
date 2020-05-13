@@ -20,7 +20,8 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -53,8 +54,20 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({
-      persons: persons
+
+    // setState doesn't execute immediately, but when react has free resources to do so
+    // In more complex applications it can take awhile before new state will be applied
+    // What's more, this.state in some cases may be not the current state but rather version changed by another call of setState
+    // So if new state depends on previous state, alternative syntax should be used which takes function instead of object
+    // this.setState({
+    //   persons: persons,
+    //   changeCounter: this.state.changeCounter + 1
+    // })
+    this.setState((prevState, props) => {
+        return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      }
     })
   }
 
