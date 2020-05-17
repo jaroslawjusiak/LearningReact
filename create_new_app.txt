@@ -1,1 +1,3 @@
 create-react-app {app_name}
+
+Jak sie cos rozwali to pomaga: npm install react-scripts@latest
