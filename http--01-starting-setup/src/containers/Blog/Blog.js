@@ -18,9 +18,10 @@ class Blog extends Component {
         console.log('[Blog] componentDidMount');
         axios({
             method: 'get',
-            url: 'https://jsonplaceholder.typicode.com/postsss',
-            timeout: 1000
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            timeout: 3000
             })
+        // axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(response =>{
                 const posts = response.data.slice(0,4);
                 const updatedPosts = posts.map(post =>{
@@ -30,9 +31,11 @@ class Blog extends Component {
                     };
                 });
                 this.setState({posts: updatedPosts})
+                console.log('[Blog] get all posts')
                 console.log(response);
             })
             .catch(error => {
+                console.log('[Blog] catching an error')
                 console.log(error);
                 this.setState({error:true});
             });
