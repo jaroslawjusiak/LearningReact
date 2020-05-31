@@ -18,7 +18,7 @@ class Blog extends Component {
         console.log('[Blog] componentDidMount');
         axios({
             method: 'get',
-            url: 'https://jsonplaceholder.typicode.com/posts',
+            url: '/posts',
             timeout: 3000
             })
         // axios.get('https://jsonplaceholder.typicode.com/posts')

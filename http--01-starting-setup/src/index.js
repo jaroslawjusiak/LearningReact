@@ -5,6 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import axios from 'axios';
 
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
 const requestInterceptor = axios.interceptors.request.use(request=>{
     console.log('[Index] interceptor request');
     console.log(request);
