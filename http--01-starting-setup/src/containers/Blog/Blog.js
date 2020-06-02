@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import axios from '../../axios';
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
@@ -19,10 +20,12 @@ class Blog extends Component {
         axios({
             method: 'get',
             url: '/posts',
-            timeout: 3000
+            timeout: 2000
             })
-        // axios.get('https://jsonplaceholder.typicode.com/posts')
+        //axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(response =>{
+                console.log('[Blog] get all posts');
+                console.log(response);
                 const posts = response.data.slice(0,4);
                 const updatedPosts = posts.map(post =>{
                     return{
@@ -31,8 +34,7 @@ class Blog extends Component {
                     };
                 });
                 this.setState({posts: updatedPosts})
-                console.log('[Blog] get all posts')
-                console.log(response);
+                
             })
             .catch(error => {
                 console.log('[Blog] catching an error')

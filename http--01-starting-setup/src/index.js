@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 
 const requestInterceptor = axios.interceptors.request.use(request=>{
     console.log('[Index] interceptor request');
