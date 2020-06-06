@@ -10,7 +10,9 @@ class Posts extends Component{
     }
 
     componentDidMount(){
-        console.log('[Blog] componentDidMount');
+        console.log('[Posts] componentDidMount');
+        console.log(this.props);
+        
         // axios({
         //     method: 'get',
         //     url: '/posts',
