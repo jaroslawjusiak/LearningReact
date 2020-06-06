@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Posts from './Posts/Posts';
 
 import './Blog.css';
-import {Route, Link} from 'react-router-dom';
+import {Route, NavLink} from 'react-router-dom';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
@@ -20,12 +20,22 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
-                                pathname: '/new-post',
-                                hash: '#submit',     //hash pozwala skoczyć do elementu o zadanym id (#submit)
-                                search: '?quick-submit=true'   //search pozwala dodawać elementy query do URLa (parametry)
-                            }}>New Post</Link></li>
+                            <li><NavLink 
+                                to="/" 
+                                exact
+                                // activeClassName="my-active" //allows to set custom class name for an active link
+                            >Home</NavLink></li>
+                            <li><NavLink 
+                                to={{
+                                    pathname: '/new-post',
+                                    hash: '#submit',     //hash allows to jump to the element tagged by specific css id (#submit)
+                                    search: '?quick-submit=true'   //search allows to add query parameters to the URL
+                                }}
+                                activeStyle={{
+                                    color: '#fa923f',
+                                    textDecoration: 'underline'
+                                }}
+                            >New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
