@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Posts from './Posts/Posts';
 
 import './Blog.css';
+import {Route} from 'react-router-dom';
 
 class Blog extends Component {
     
@@ -23,7 +24,11 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Posts />
+                {/* <Route path="/" exact render={() => <Posts />} /> */}
+                <Route path="/" exact component={Posts} />
+
+
+
                 {/* <section>
                     <FullPost id={this.state.selectedPostId}/>
                 </section>
