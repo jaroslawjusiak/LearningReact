@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Posts from './Posts/Posts';
 import FullPost from './FullPost/FullPost';
 import './Blog.css';
-import {Route, NavLink} from 'react-router-dom';
+import {Route, NavLink, Switch} from 'react-router-dom';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
@@ -40,9 +40,13 @@ class Blog extends Component {
                     </nav>
                 </header>
                 {/* <Route path="/" exact render={() => <Posts />} /> */}
-                <Route path="/" exact component={Posts} />
-                <Route path="/new-post" component={NewPost} />
-                <Route path="/posts/:id" component={FullPost} />
+                {/* Switch component makes sure that only first matching route is loaded */}
+                <Switch> 
+                    <Route path="/" exact component={Posts} />
+                    <Route path="/new-post" component={NewPost} />
+                    <Route path="/:id" component={FullPost} />
+                </Switch>
+                
 
 
 
