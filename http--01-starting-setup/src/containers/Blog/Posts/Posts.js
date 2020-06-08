@@ -14,12 +14,12 @@ class Posts extends Component{
         console.log('[Posts] componentDidMount');
         console.log(this.props);
         
-        // axios({
-        //     method: 'get',
-        //     url: '/posts',
-        //     timeout: 2000
-        //     })
-        axios.get('/posts')
+        axios({
+            method: 'get',
+            url: '/posts',
+            timeout: 2000,            
+            })
+         //axios.get('/posts')
             .then(response =>{
                 console.log('[Blog] get all posts');
                 console.log(response);
