@@ -3,6 +3,8 @@ import Post from '../../../components/Post/Post';
 import axios from '../../../axios';
 import classes from './Posts.module.css';
 // import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component{
 
@@ -63,9 +65,13 @@ class Posts extends Component{
         }
 
         return (
-            <section className={classes.Posts}>
-                {posts}
-            </section>
+            <div>
+                <section className={classes.Posts}>
+                    {posts}
+                </section>
+                <Route path="/:id" component={FullPost} />                
+            </div>
+            
         );
     }
 }

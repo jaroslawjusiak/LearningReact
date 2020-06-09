@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Posts from './Posts/Posts';
-import FullPost from './FullPost/FullPost';
+
 import './Blog.css';
 import {Route, NavLink, Switch} from 'react-router-dom';
 import NewPost from './NewPost/NewPost';
@@ -24,7 +24,7 @@ class Blog extends Component {
                                 to="/" 
                                 exact
                                 // activeClassName="my-active" //allows to set custom class name for an active link
-                            >Home</NavLink></li>
+                            >Posts</NavLink></li>
                             <li><NavLink 
                                 to={{
                                     pathname: '/new-post',
@@ -44,7 +44,7 @@ class Blog extends Component {
                 <Switch> 
                     <Route path="/" exact component={Posts} />
                     <Route path="/new-post" component={NewPost} />
-                    <Route path="/:id" component={FullPost} />
+                    
                 </Switch>
                 
 
