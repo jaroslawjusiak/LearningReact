@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import classes from './Orders.module.css';
-import Oder from '../../components/Order/Order';
+import Order from '../../components/Order/Order';
 
 class Orders extends Component{
     state = {
@@ -18,8 +18,8 @@ class Orders extends Component{
     render(){
         return (
             <div>
-                <Orders />
-                <Orders />
+                <Order />
+                <Order />
             </div>
         );
     };
