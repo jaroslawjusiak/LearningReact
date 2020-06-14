@@ -72,13 +72,18 @@ class ContactData extends Component{
 
     orderHandler = (event) => {
         event.preventDefault(); //prevent reloading page which is default action on submitting form
-        console.log(this.props.ingredients);
-
         this.setState({loading:true});
+
+        const formData = {};
+
+        for(let formElementId in this.state.orderForm){
+            formData[formElementId] = this.state.orderForm[formElementId].value;
+        }
+
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
-            
+            orderData: formData
         };
         
         axios.post('/orders.json', order)
@@ -117,7 +122,7 @@ class ContactData extends Component{
         }
         
         let form = (
-            <form>
+            <form onSubmit={this.orderHandler}>
                    {formElementsArray.map(formElement =>(
                        <Input key={formElement.id}
                         elementType={formElement.config.elementType}
@@ -126,7 +131,7 @@ class ContactData extends Component{
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                         />
                    ))}
-                   <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
+                   <Button btnType="Success">ORDER</Button>
                </form>
         );
         if(this.state.loading){
