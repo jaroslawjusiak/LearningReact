@@ -14,5 +14,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "prettier": {
+		"printWidth": 120,
+		"tabWidth": 4,
+		"singleQuote": true,
+		"jsxSingleQuote": true,
+		"trailingComma": "none",
+		"useTabs": true,
+		"jsxBracketSameLine": false,
+		"arrowParens": "avoid"
+	}
 }
