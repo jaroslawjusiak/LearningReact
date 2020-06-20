@@ -1,35 +1,44 @@
-import * as actionTypes from "../store/actions";
+import * as actionTypes from '../store/actions';
 
 const initialState = {
     ingredients: {
         salad: 0,
         bacon: 0,
         cheese: 0,
-        meat: 0,
+        meat: 0
     },
-    price: 4,
+    totalPrice: 4
+};
+
+const INGREDIENT_PRICES = {
+    salad: 0.5,
+    cheese: 0.4,
+    meat: 1.3,
+    bacon: 0.7
 };
 
 const reducer = (state = initialState, action) => {
-    console.log("action", action);
+    console.log('action', action);
     switch (action.type) {
         case actionTypes.ADD_INGREDIENT:
-            console.log("ADD_INGREDIENT", action);
+            console.log('ADD_INGREDIENT', action);
             return {
                 ...state,
                 ingredients: {
                     ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
+                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
                 },
+                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
             };
         case actionTypes.REMOVE_INGREDIENT:
-            console.log("REMOVE_INGREDIENT", action);
+            console.log('REMOVE_INGREDIENT', action);
             return {
                 ...state,
                 ingredients: {
                     ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1,
+                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 },
+                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
             };
         default:
             return state;
