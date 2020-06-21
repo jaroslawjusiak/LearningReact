@@ -1,37 +1,35 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actions';
 
 const initialState = {
-    results: []
+	results: []
 };
 
-
 const reducer = (state = initialState, action) => {
-    console.log('[ResultReducer]: action', action);
-    //console.log('state', state);
-    
-    switch(action.type){
-        case actionTypes.STORE_RESULT:
-            return {
-                ...state,
-                results: state.results.concat({id: new Date(), value: action.result})
-            };
+	console.log('[ResultReducer]: action', action);
+	//console.log('state', state);
 
-        case actionTypes.DELETE_RESULT:
-            // const id = 2;
-            // const newArray = [...state.results];
-            // newArray.splice(id,1);
+	switch (action.type) {
+		case actionTypes.STORE_RESULT:
+			return {
+				...state,
+				results: state.results.concat({ id: new Date(), value: action.result })
+			};
 
-            //res => true would copy all elements of original array
-            const updatedArray = state.results.filter(res => res.id !== action.id);
-        return {
-                ...state,
-                results: updatedArray
-            };
-        
-        default:
-            return state;
-    }
-    
-}
+		case actionTypes.DELETE_RESULT:
+			// const id = 2;
+			// const newArray = [...state.results];
+			// newArray.splice(id,1);
+
+			//res => true would copy all elements of original array
+			const updatedArray = state.results.filter(res => res.id !== action.id);
+			return {
+				...state,
+				results: updatedArray
+			};
+
+		default:
+			return state;
+	}
+};
 
 export default reducer;
