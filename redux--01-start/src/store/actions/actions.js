@@ -38,6 +38,14 @@ export const storeResult = result => {
 	};
 };
 
+export const storeResultAsync = result => {
+	return dispatch => {
+		setTimeout(() => {
+			dispatch(storeResult(result));
+		}, 2000);
+	};
+};
+
 export const deleteResult = id => {
 	return {
 		type: DELETE_RESULT,

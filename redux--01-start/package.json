@@ -7,7 +7,8 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-scripts": "1.0.13",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "set PORT=5000 && react-scripts start",
@@ -16,13 +17,13 @@
     "eject": "react-scripts eject"
   },
   "prettier": {
-		"printWidth": 120,
-		"tabWidth": 4,
-		"singleQuote": true,
-		"jsxSingleQuote": true,
-		"trailingComma": "none",
-		"useTabs": true,
-		"jsxBracketSameLine": false,
-		"arrowParens": "avoid"
-	}
+    "printWidth": 120,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "trailingComma": "none",
+    "useTabs": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid"
+  }
 }
