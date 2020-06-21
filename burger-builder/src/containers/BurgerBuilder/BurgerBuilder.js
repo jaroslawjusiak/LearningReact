@@ -12,22 +12,10 @@ import * as burgerBuilderActions from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
 	state = {
-		purchasing: false,
-		loading: false,
-		error: false
+		purchasing: false
 	};
 
-	componentDidMount() {
-		// axios.get('/ingredients.json')
-		// .then(res => {
-		//     console.log(res);
-		//     this.setState({ingredients: res.data});
-		// })
-		// .catch(error =>{
-		//     console.log(error);
-		//     this.setState({error: true})
-		// });
-	}
+	componentDidMount() {}
 
 	updatePurchaseState(ingredients) {
 		const sum = Object.keys(ingredients)
@@ -65,6 +53,8 @@ class BurgerBuilder extends Component {
 		let orderSummary = null;
 		let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
+		console.log('[BurgerBuilder]: render', this.props.ings);
+
 		if (this.props.ings) {
 			orderSummary = (
 				<OrderSummary
@@ -90,10 +80,6 @@ class BurgerBuilder extends Component {
 					/>
 				</Aux>
 			);
-		}
-
-		if (this.state.loading) {
-			orderSummary = <Spinner />;
 		}
 
 		return (
