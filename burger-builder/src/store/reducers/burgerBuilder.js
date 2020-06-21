@@ -40,7 +40,12 @@ const reducer = (state = initialState, action) => {
 			console.log('SET_INGREDIENTS', action);
 			return {
 				...state,
-				ingredients: action.ingredients,
+				ingredients: {
+					salad: action.ingredients.salad,
+					bacon: action.ingredients.bacon,
+					cheese: action.ingredients.cheese,
+					meat: action.ingredients.meat
+				},
 				error: false
 			};
 		case actionTypes.FETCHING_INGREDIENTS_FAILED:
