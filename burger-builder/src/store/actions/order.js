@@ -36,3 +36,11 @@ export const purchaseBurgerAsync = orderData => {
 			});
 	};
 };
+
+export const purchaseInit = () => {
+	return {
+		type: actionTypes.PURCHASE_INIT
+	}
+};
+
+//Lesson 314 - Handling Purchases and Updating the UI
