@@ -7,6 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+    console.log('[Orders Reducer] - type', action.type);
     switch (action.type) {
         case actionTypes.PURCHASE_INIT:
             return {
@@ -18,7 +19,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: true
             }
-
         case actionTypes.PURCHASE_BURGER_SUCCESS:
             const newOrder = {
                 ...action.orderData,
@@ -30,13 +30,28 @@ const reducer = (state = initialState, action) => {
                 purchased: true,
                 orders: state.orders.concat(newOrder)
             }
-
         case actionTypes.PURCHASE_BURGER_FAIL:
             return {
                 ...state,
                 loading: false
             };
-
+        case actionTypes.FETCH_ORDERS_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case actionTypes.FETCH_ORDERS_SUCCESS:
+            console.log('FETCH_ORDERS_SUCCESS', action.orders);
+            return {
+                ...state,
+                orders: action.orders,
+                loading: false
+            };
+        case actionTypes.FETCH_ORDERS_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
         default:
             return state;
     }
