@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState = {
 	ingredients: null,
@@ -17,29 +18,23 @@ const reducer = (state = initialState, action) => {
 	console.log('action', action);
 	switch (action.type) {
 		case actionTypes.ADD_INGREDIENT:
-			console.log('ADD_INGREDIENT', action);
-			return {
-				...state,
-				ingredients: {
-					...state.ingredients,
-					[action.ingredientName]: state.ingredients[action.ingredientName] + 1
-				},
+			const updatedIngredient = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 };
+			const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
+			updatedState = {
+				ingredients: updatedIngredients,
 				totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
-			};
+			}
+			return updateObject(state, updatedState);
 		case actionTypes.REMOVE_INGREDIENT:
-			console.log('REMOVE_INGREDIENT', action);
-			return {
-				...state,
-				ingredients: {
-					...state.ingredients,
-					[action.ingredientName]: state.ingredients[action.ingredientName] - 1
-				},
-				totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
-			};
+			const updatedIngredient = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 };
+			const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
+			updatedState = {
+				ingredients: updatedIngredients,
+				totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+			}
+			return updateObject(state, updatedState);
 		case actionTypes.SET_INGREDIENTS:
-			console.log('SET_INGREDIENTS', action);
-			return {
-				...state,
+			return updateObject(state, {
 				ingredients: {
 					salad: action.ingredients.salad,
 					bacon: action.ingredients.bacon,
@@ -48,13 +43,12 @@ const reducer = (state = initialState, action) => {
 				},
 				totalPrice: 4,
 				error: false
-			};
+			});
+
+
 		case actionTypes.FETCHING_INGREDIENTS_FAILED:
-			console.log('FETCHING_INGREDIENTS_FAILED', action);
-			return {
-				...state,
-				error: true
-			};
+			return updateObject(state, { error: true });
+
 		default:
 			return state;
 	}
