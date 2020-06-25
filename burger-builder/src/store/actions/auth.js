@@ -43,12 +43,12 @@ export const authAsync = (email, password, isSignUp) => {
 
         axios.post(url, authData)
             .then(res => {
-                console.log('[authAsync]: signing UP success', res.data);
+                console.log('[authAsync]: auth success', res.data);
                 dispatch(AuthSuccess(res.data));
             })
             .catch(err => {
-                console.log('[authAsync]: signing UP error', err);
-                dispatch(AuthFail(err));
+                console.log('[authAsync]: auth error', err);
+                dispatch(AuthFail(err.response.data.error));
             });
     };
 };
