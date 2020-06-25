@@ -11,9 +11,11 @@ export const authStart = () => {
 };
 
 export const AuthSuccess = (authData) => {
+    console.log('[AuthSuccess]', authData);
     return {
-        type: actionTypes.AUTH_START,
-        authData: authData
+        type: actionTypes.AUTH_SUCCESS,
+        idToken: authData.idToken,
+        userId: authData.localId
     };
 };
 
