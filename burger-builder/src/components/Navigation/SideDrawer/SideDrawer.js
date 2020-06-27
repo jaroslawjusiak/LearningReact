@@ -7,25 +7,23 @@ import Aux from './../../../hoc/Auxiliary/Auxiliary';
 
 const sideDrawer = (props) => {
     let attachedClasses = [classes.SideDrawer];
-    
-    if (props.open){
+
+    if (props.open) {
         attachedClasses.push(classes.Open)
     }
-    else{
+    else {
         attachedClasses.push(classes.Close)
     }
 
     return (
         <Aux>
-            <Backdrop show={props.open} clicked={props.closed}/>
+            <Backdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')}>
                 <div className={classes.Logo}>
                     <Logo />
                 </div>
                 <nav>
-                    <NavigationItems>
-
-                    </NavigationItems>
+                    <NavigationItems isAuthenticated={props.isAuth} />
                 </nav>
             </div>
         </Aux>
