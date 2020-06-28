@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
@@ -8,7 +9,10 @@ import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 
-function App() {
+function App(props) {
+  //Checking local storage for valid session
+  props.onTryAutoSignIn();
+
   return (
     <div>
       <Layout>
@@ -24,4 +28,11 @@ function App() {
   );
 }
 
-export default App;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignIn: () => dispatch(actions.authCheckState())
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);
