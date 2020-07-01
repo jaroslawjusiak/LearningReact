@@ -74,10 +74,6 @@ class Auth extends Component {
             })
         });
 
-        const updatedControls = {
-            ...this.state.controls,
-
-        };
         this.setState({ controls: updatedControls });
     };
 

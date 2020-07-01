@@ -3,18 +3,14 @@ import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import Button from './../../UI/Button/Button';
 
 class OrderSummary extends React.Component {
-    componentDidUpdate(){
-        console.log('[OrderSummary] did update')
-    }
-
-    render(){
+    render() {
 
         const ingredientSummary = Object.keys(this.props.ingredients)
-        .map(igKey => {
-        return <li key={igKey}>
-                    <span style={{textTransform:'capitalize'}}>{igKey}</span> : {this.props.ingredients[igKey]}
+            .map(igKey => {
+                return <li key={igKey}>
+                    <span style={{ textTransform: 'capitalize' }}>{igKey}</span> : {this.props.ingredients[igKey]}
                 </li>
-        });
+            });
 
         return (
             <Aux>

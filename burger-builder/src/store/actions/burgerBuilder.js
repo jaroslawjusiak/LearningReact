@@ -34,11 +34,9 @@ export const initIngredientsAsync = () => {
 		axios
 			.get('/ingredients.json')
 			.then(res => {
-				console.log(res);
 				dispatch(setIngredients(res.data));
 			})
 			.catch(error => {
-				console.log(error);
 				dispatch(fetchingIngredientsFailed(error));
 			});
 	};

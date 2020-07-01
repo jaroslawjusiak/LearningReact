@@ -28,11 +28,9 @@ export const purchaseBurgerAsync = (orderData, token) => {
 		dispatch(purchaseBurgerStart());
 		axios.post('/orders.json?auth=' + token, orderData)
 			.then(response => {
-				console.log('purchaseBurgerAsync:', response.data);
 				dispatch(purchaseBurgerSuccess(response.data.name, orderData));
 			})
 			.catch(error => {
-				console.log(error);
 				dispatch(purchaseBurgerFail(error));
 			});
 	};
@@ -45,7 +43,6 @@ export const purchaseInit = () => {
 };
 
 export const fetchOrdersSuccess = (orders) => {
-	console.log('fetchOrdersSuccess - orders', orders);
 	return {
 		type: actionTypes.FETCH_ORDERS_SUCCESS,
 		orders: orders
@@ -71,7 +68,6 @@ export const fetchOrdersAsync = (token, userId) => {
 		const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
 		axios.get(`/orders.json${queryParams}`)
 			.then(res => {
-				console.log('fetchOrdersAsync: res', res);
 				const fetchedOrders = [];
 				for (let key in res.data) {
 					fetchedOrders.push({
@@ -79,12 +75,9 @@ export const fetchOrdersAsync = (token, userId) => {
 						id: key
 					});
 				}
-				console.log('fetchOrdersAsync: fetchedOrders', fetchedOrders);
 				dispatch(fetchOrdersSuccess(fetchedOrders));
-				//this.setState({ orders: fetchedOrders });
 			})
 			.catch(err => {
-				console.log('[Orders Action Creator] fetchOrdersAsync -> error', err);
 				dispatch(fetchingIngredientsFailed(err));
 			});
 	};

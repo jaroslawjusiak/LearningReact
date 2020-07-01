@@ -48,7 +48,6 @@ const fetchOrdersFail = (state) => {
 };
 
 const reducer = (state = initialState, action) => {
-    console.log('[Orders Reducer] - type', action.type);
     switch (action.type) {
         case actionTypes.PURCHASE_INIT: return purchaseInit(state);
         case actionTypes.PURCHASE_BURGER_START: return purchaseBurgerStart(state);

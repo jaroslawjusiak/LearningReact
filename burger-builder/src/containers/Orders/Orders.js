@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classes from './Orders.module.css';
 import Order from '../../components/Order/Order';
 import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -10,17 +9,10 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 class Orders extends Component {
 
     componentDidMount() {
-        console.log('[Orders]: componentDidMount - token', this.props.token)
         this.props.onFetchOrders(this.props.token, this.props.userId);
-        console.log('[Orders] - componentDidMount: props', this.props);
-    };
-
-    componentDidUpdate() {
-
     };
 
     render() {
-        console.log('[Orders] - render: props', this.props);
         let orders = <Spinner />;
         if (!this.props.loading) {
             orders =

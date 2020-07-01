@@ -9,7 +9,6 @@ import axios from '../../axios-orders';
 import Spinner from './../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
-import { Redirect } from 'react-router-dom';
 
 class BurgerBuilder extends Component {
 	state = {
@@ -17,7 +16,6 @@ class BurgerBuilder extends Component {
 	};
 
 	componentDidMount() {
-		console.log('[BurgerBuild] componentDidMount');
 		this.props.onInitIngredients();
 	}
 
@@ -38,7 +36,6 @@ class BurgerBuilder extends Component {
 		}
 		else {
 			this.props.onSetAuthRedirectPath('/checkout');
-			console.log('[BurgerBuilder]: purchaseHandler - authRedirectPath', this.props.authRedirectPath);
 			this.props.history.push('/auth');
 		}
 	};
@@ -48,13 +45,11 @@ class BurgerBuilder extends Component {
 	};
 
 	purchaseContinueHandler = () => {
-		console.log('[BurgerBuilder] - purchaseContinueHandler');
 		this.props.onPurchaseInit();
 		this.props.history.push('/checkout');
 	};
 
 	render() {
-		console.log('ings', this.props.ings);
 		const disableInfo = {
 			...this.props.ings
 		};
@@ -64,8 +59,6 @@ class BurgerBuilder extends Component {
 
 		let orderSummary = null;
 		let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
-
-		console.log('[BurgerBuilder]: render', this.props.ings);
 
 		if (this.props.ings) {
 			orderSummary = (

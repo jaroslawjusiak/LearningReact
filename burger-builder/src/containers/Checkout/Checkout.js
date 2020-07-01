@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import classes from './Checkout.module.css';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import { Route, Redirect } from 'react-router-dom';
 import ContactData from '../Checkout/ContactData/ContactData';
 import { connect } from 'react-redux';
 
 class Checkout extends Component {
-
-	componentDidMount() {
-		console.log('[Checkout] componentDidMount');
-		console.log(this.props);
-
-	}
-
-	componentDidUpdate() { }
 
 	checkoutCancelledHandler = () => {
 		this.props.history.goBack();
