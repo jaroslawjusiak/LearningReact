@@ -15,9 +15,19 @@ configure({ adapter: new Adapter() });
 // 1. Tells what we test anh how it should work
 // 2. Actual test
 describe('<NavigationItems />', () => {
-    it('should render two <NavigationItems /> elements if not authenticated', () => {
-        const wrapper = shallow(<NavigationItems />);
+    let wrapper;
 
+    beforeEach(() => {
+        wrapper = shallow(<NavigationItems />);
+    });
+
+    it('should render two <NavigationItems /> elements if not authenticated', () => {
         expect(wrapper.find(NavigationItem)).toHaveLength(2);
+    });
+
+    it('should render three <NavigationItems /> elements if authenticated', () => {
+        //wrapper = shallow(<NavigationItems isAuthenticated/>);
+        wrapper.setProps({ isAuthenticated: true });
+        expect(wrapper.find(NavigationItem)).toHaveLength(3);
     });
 });
